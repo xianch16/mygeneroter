@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.businessRegisterMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.businessRegister">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="plat_id" jdbcType="BIGINT" property="platId" />
+    <result column="reg_name" jdbcType="VARCHAR" property="regName" />
+    <result column="corp_name" jdbcType="VARCHAR" property="corpName" />
+    <result column="reg_code" jdbcType="VARCHAR" property="regCode" />
+    <result column="reg_addr" jdbcType="VARCHAR" property="regAddr" />
+    <result column="legal_name" jdbcType="VARCHAR" property="legalName" />
+    <result column="legal_cert_no" jdbcType="VARCHAR" property="legalCertNo" />
+    <result column="legal_mp" jdbcType="VARCHAR" property="legalMp" />
+    <result column="legal_email" jdbcType="VARCHAR" property="legalEmail" />
+    <result column="bank_branch_id" jdbcType="VARCHAR" property="bankBranchId" />
+    <result column="bank_abbreviation" jdbcType="VARCHAR" property="bankAbbreviation" />
+    <result column="bank_acct_id" jdbcType="VARCHAR" property="bankAcctId" />
+    <result column="bank_acct_name" jdbcType="VARCHAR" property="bankAcctName" />
+    <result column="front_of_ID_card" jdbcType="VARCHAR" property="frontOfIdCard" />
+    <result column="back_of_ID_card" jdbcType="VARCHAR" property="backOfIdCard" />
+    <result column="business_license" jdbcType="VARCHAR" property="businessLicense" />
+    <result column="bank_and_ID_card" jdbcType="VARCHAR" property="bankAndIdCard" />
+    <result column="door_header_img" jdbcType="VARCHAR" property="doorHeaderImg" />
+    <result column="opening_permit" jdbcType="VARCHAR" property="openingPermit" />
+    <result column="front_of_bankcard" jdbcType="VARCHAR" property="frontOfBankcard" />
+    <result column="back_of_bankcard" jdbcType="VARCHAR" property="backOfBankcard" />
+    <result column="checkout_counter" jdbcType="VARCHAR" property="checkoutCounter" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="channel_merid" jdbcType="VARCHAR" property="channelMerid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="sub_mer_id" jdbcType="VARCHAR" property="subMerId" />
+    <result column="reg_pla_mer_id" jdbcType="VARCHAR" property="regPlaMerId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_by" jdbcType="BIGINT" property="updateBy" />
+    <result column="create_by" jdbcType="BIGINT" property="createBy" />
+    <result column="del_status" jdbcType="INTEGER" property="delStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, plat_id, reg_name, corp_name, reg_code, reg_addr, legal_name, legal_cert_no, 
+    legal_mp, legal_email, bank_branch_id, bank_abbreviation, bank_acct_id, bank_acct_name, 
+    front_of_ID_card, back_of_ID_card, business_license, bank_and_ID_card, door_header_img, 
+    opening_permit, front_of_bankcard, back_of_bankcard, checkout_counter, create_time, 
+    channel_merid, status, sub_mer_id, reg_pla_mer_id, remark, update_time, update_by, 
+    create_by, del_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from business_register
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from business_register
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.businessRegister">
+    insert into business_register (id, plat_id, reg_name, 
+      corp_name, reg_code, reg_addr, 
+      legal_name, legal_cert_no, legal_mp, 
+      legal_email, bank_branch_id, bank_abbreviation, 
+      bank_acct_id, bank_acct_name, front_of_ID_card, 
+      back_of_ID_card, business_license, bank_and_ID_card, 
+      door_header_img, opening_permit, front_of_bankcard, 
+      back_of_bankcard, checkout_counter, create_time, 
+      channel_merid, status, sub_mer_id, 
+      reg_pla_mer_id, remark, update_time, 
+      update_by, create_by, del_status
+      )
+    values (#{id,jdbcType=BIGINT}, #{platId,jdbcType=BIGINT}, #{regName,jdbcType=VARCHAR}, 
+      #{corpName,jdbcType=VARCHAR}, #{regCode,jdbcType=VARCHAR}, #{regAddr,jdbcType=VARCHAR}, 
+      #{legalName,jdbcType=VARCHAR}, #{legalCertNo,jdbcType=VARCHAR}, #{legalMp,jdbcType=VARCHAR}, 
+      #{legalEmail,jdbcType=VARCHAR}, #{bankBranchId,jdbcType=VARCHAR}, #{bankAbbreviation,jdbcType=VARCHAR}, 
+      #{bankAcctId,jdbcType=VARCHAR}, #{bankAcctName,jdbcType=VARCHAR}, #{frontOfIdCard,jdbcType=VARCHAR}, 
+      #{backOfIdCard,jdbcType=VARCHAR}, #{businessLicense,jdbcType=VARCHAR}, #{bankAndIdCard,jdbcType=VARCHAR}, 
+      #{doorHeaderImg,jdbcType=VARCHAR}, #{openingPermit,jdbcType=VARCHAR}, #{frontOfBankcard,jdbcType=VARCHAR}, 
+      #{backOfBankcard,jdbcType=VARCHAR}, #{checkoutCounter,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{channelMerid,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{subMerId,jdbcType=VARCHAR}, 
+      #{regPlaMerId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=BIGINT}, #{createBy,jdbcType=BIGINT}, #{delStatus,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.businessRegister">
+    insert into business_register
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="platId != null">
+        plat_id,
+      </if>
+      <if test="regName != null">
+        reg_name,
+      </if>
+      <if test="corpName != null">
+        corp_name,
+      </if>
+      <if test="regCode != null">
+        reg_code,
+      </if>
+      <if test="regAddr != null">
+        reg_addr,
+      </if>
+      <if test="legalName != null">
+        legal_name,
+      </if>
+      <if test="legalCertNo != null">
+        legal_cert_no,
+      </if>
+      <if test="legalMp != null">
+        legal_mp,
+      </if>
+      <if test="legalEmail != null">
+        legal_email,
+      </if>
+      <if test="bankBranchId != null">
+        bank_branch_id,
+      </if>
+      <if test="bankAbbreviation != null">
+        bank_abbreviation,
+      </if>
+      <if test="bankAcctId != null">
+        bank_acct_id,
+      </if>
+      <if test="bankAcctName != null">
+        bank_acct_name,
+      </if>
+      <if test="frontOfIdCard != null">
+        front_of_ID_card,
+      </if>
+      <if test="backOfIdCard != null">
+        back_of_ID_card,
+      </if>
+      <if test="businessLicense != null">
+        business_license,
+      </if>
+      <if test="bankAndIdCard != null">
+        bank_and_ID_card,
+      </if>
+      <if test="doorHeaderImg != null">
+        door_header_img,
+      </if>
+      <if test="openingPermit != null">
+        opening_permit,
+      </if>
+      <if test="frontOfBankcard != null">
+        front_of_bankcard,
+      </if>
+      <if test="backOfBankcard != null">
+        back_of_bankcard,
+      </if>
+      <if test="checkoutCounter != null">
+        checkout_counter,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="channelMerid != null">
+        channel_merid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="subMerId != null">
+        sub_mer_id,
+      </if>
+      <if test="regPlaMerId != null">
+        reg_pla_mer_id,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="delStatus != null">
+        del_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="platId != null">
+        #{platId,jdbcType=BIGINT},
+      </if>
+      <if test="regName != null">
+        #{regName,jdbcType=VARCHAR},
+      </if>
+      <if test="corpName != null">
+        #{corpName,jdbcType=VARCHAR},
+      </if>
+      <if test="regCode != null">
+        #{regCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regAddr != null">
+        #{regAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="legalName != null">
+        #{legalName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalCertNo != null">
+        #{legalCertNo,jdbcType=VARCHAR},
+      </if>
+      <if test="legalMp != null">
+        #{legalMp,jdbcType=VARCHAR},
+      </if>
+      <if test="legalEmail != null">
+        #{legalEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="bankBranchId != null">
+        #{bankBranchId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAbbreviation != null">
+        #{bankAbbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAcctId != null">
+        #{bankAcctId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAcctName != null">
+        #{bankAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="frontOfIdCard != null">
+        #{frontOfIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="backOfIdCard != null">
+        #{backOfIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null">
+        #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAndIdCard != null">
+        #{bankAndIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="doorHeaderImg != null">
+        #{doorHeaderImg,jdbcType=VARCHAR},
+      </if>
+      <if test="openingPermit != null">
+        #{openingPermit,jdbcType=VARCHAR},
+      </if>
+      <if test="frontOfBankcard != null">
+        #{frontOfBankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="backOfBankcard != null">
+        #{backOfBankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutCounter != null">
+        #{checkoutCounter,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="channelMerid != null">
+        #{channelMerid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="subMerId != null">
+        #{subMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="regPlaMerId != null">
+        #{regPlaMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="delStatus != null">
+        #{delStatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.businessRegister">
+    update business_register
+    <set>
+      <if test="platId != null">
+        plat_id = #{platId,jdbcType=BIGINT},
+      </if>
+      <if test="regName != null">
+        reg_name = #{regName,jdbcType=VARCHAR},
+      </if>
+      <if test="corpName != null">
+        corp_name = #{corpName,jdbcType=VARCHAR},
+      </if>
+      <if test="regCode != null">
+        reg_code = #{regCode,jdbcType=VARCHAR},
+      </if>
+      <if test="regAddr != null">
+        reg_addr = #{regAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="legalName != null">
+        legal_name = #{legalName,jdbcType=VARCHAR},
+      </if>
+      <if test="legalCertNo != null">
+        legal_cert_no = #{legalCertNo,jdbcType=VARCHAR},
+      </if>
+      <if test="legalMp != null">
+        legal_mp = #{legalMp,jdbcType=VARCHAR},
+      </if>
+      <if test="legalEmail != null">
+        legal_email = #{legalEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="bankBranchId != null">
+        bank_branch_id = #{bankBranchId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAbbreviation != null">
+        bank_abbreviation = #{bankAbbreviation,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAcctId != null">
+        bank_acct_id = #{bankAcctId,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAcctName != null">
+        bank_acct_name = #{bankAcctName,jdbcType=VARCHAR},
+      </if>
+      <if test="frontOfIdCard != null">
+        front_of_ID_card = #{frontOfIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="backOfIdCard != null">
+        back_of_ID_card = #{backOfIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="businessLicense != null">
+        business_license = #{businessLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="bankAndIdCard != null">
+        bank_and_ID_card = #{bankAndIdCard,jdbcType=VARCHAR},
+      </if>
+      <if test="doorHeaderImg != null">
+        door_header_img = #{doorHeaderImg,jdbcType=VARCHAR},
+      </if>
+      <if test="openingPermit != null">
+        opening_permit = #{openingPermit,jdbcType=VARCHAR},
+      </if>
+      <if test="frontOfBankcard != null">
+        front_of_bankcard = #{frontOfBankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="backOfBankcard != null">
+        back_of_bankcard = #{backOfBankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="checkoutCounter != null">
+        checkout_counter = #{checkoutCounter,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="channelMerid != null">
+        channel_merid = #{channelMerid,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="subMerId != null">
+        sub_mer_id = #{subMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="regPlaMerId != null">
+        reg_pla_mer_id = #{regPlaMerId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=BIGINT},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=BIGINT},
+      </if>
+      <if test="delStatus != null">
+        del_status = #{delStatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.businessRegister">
+    update business_register
+    set plat_id = #{platId,jdbcType=BIGINT},
+      reg_name = #{regName,jdbcType=VARCHAR},
+      corp_name = #{corpName,jdbcType=VARCHAR},
+      reg_code = #{regCode,jdbcType=VARCHAR},
+      reg_addr = #{regAddr,jdbcType=VARCHAR},
+      legal_name = #{legalName,jdbcType=VARCHAR},
+      legal_cert_no = #{legalCertNo,jdbcType=VARCHAR},
+      legal_mp = #{legalMp,jdbcType=VARCHAR},
+      legal_email = #{legalEmail,jdbcType=VARCHAR},
+      bank_branch_id = #{bankBranchId,jdbcType=VARCHAR},
+      bank_abbreviation = #{bankAbbreviation,jdbcType=VARCHAR},
+      bank_acct_id = #{bankAcctId,jdbcType=VARCHAR},
+      bank_acct_name = #{bankAcctName,jdbcType=VARCHAR},
+      front_of_ID_card = #{frontOfIdCard,jdbcType=VARCHAR},
+      back_of_ID_card = #{backOfIdCard,jdbcType=VARCHAR},
+      business_license = #{businessLicense,jdbcType=VARCHAR},
+      bank_and_ID_card = #{bankAndIdCard,jdbcType=VARCHAR},
+      door_header_img = #{doorHeaderImg,jdbcType=VARCHAR},
+      opening_permit = #{openingPermit,jdbcType=VARCHAR},
+      front_of_bankcard = #{frontOfBankcard,jdbcType=VARCHAR},
+      back_of_bankcard = #{backOfBankcard,jdbcType=VARCHAR},
+      checkout_counter = #{checkoutCounter,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      channel_merid = #{channelMerid,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      sub_mer_id = #{subMerId,jdbcType=VARCHAR},
+      reg_pla_mer_id = #{regPlaMerId,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=BIGINT},
+      create_by = #{createBy,jdbcType=BIGINT},
+      del_status = #{delStatus,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
